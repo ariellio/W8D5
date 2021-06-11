@@ -80,5 +80,21 @@ notMarkovSays("meow", "me");
 // Pavlov says meow to me!
 // true
 
+function curriedSum(numArgs) {
+    let numbers = 0;
 
+
+
+    function _curriedSum(number) {
+        numbers += number;
+
+        if (numbers.length === numArgs) {
+            
+        }
+    }
+
+}
+
+
+const sum = curriedSum()
 
