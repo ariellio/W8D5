@@ -38,9 +38,15 @@ class Dog {
 }
 
 Function.prototype.myBind = function (ctx) {
-    let other = arguments.slice(1);
-    let that = this
+    let other = [];
+    for(let i = 1; i < arguments.length; i++){
+        other.push(arguments[i]);
+    }
+    let that = this;
     return function sumThingElse() {
+        for(let i = 0; i < arguments.length; i++){
+            other.push(arguments[i]);
+        }
         that.apply(ctx, other);
     }
 }
@@ -58,7 +64,7 @@ markov.says.myBind(pavlov, "meow", "Kush")();
 // true
 
 // no bind time args (other than context), call time args are "meow" and "a tree"
-// markov.says.myBind(pavlov)("meow", "a tree");
+markov.says.myBind(pavlov)("meow", "a tree");
 // Pavlov says meow to a tree!
 // true
 
